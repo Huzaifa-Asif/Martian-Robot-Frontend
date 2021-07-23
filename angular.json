@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Frontend-Martian-Robots"
+    }
+  },
+  "defaultProject": "Frontend-Martian-Robots",
+  "cli": {
+    "analytics": "62864f02-f960-45df-a7e5-5a473058c20e"
+  }
 }
