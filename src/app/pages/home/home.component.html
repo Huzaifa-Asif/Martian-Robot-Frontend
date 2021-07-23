@@ -1,41 +1,49 @@
-    <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1">Martian Robots</span>
-    </nav>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">{{spinnerText}}</p>
+</ngx-spinner>
+<nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-brand mb-0 h1">Martian Robots</span>
+</nav>
 
-    <div class="container">
+<div class="container">
 
-        <div class="row mt-5">
+  <div class="row mt-5">
 
-            <div class="col-6">
+    <div class="col-6">
+      <form #martianRobotForm="ngForm" (ngSubmit)="onSubmit()"
+        autocomplete="false">
+        <div class="form-group">
 
-                <div class="form-group">
-
-                    <label for="instructions">Robot Instructions:</label>
-                    <textarea class="form-control" id="instructions" rows="9" maxlength="100"></textarea>
-                    <small id="emailHelp" class="form-text text-muted">No space at the start of input - Max input length: 100</small>
-
-                </div>
-
-                <button type="submit" class="btn btn-primary w-100">Submit</button>
-
-
-            </div>
-
-            <div class="col-6">
-
-                <label for="resultDisplay">Output:</label>
-                <textarea class="form-control" id="resultDisplay" rows="9" disabled></textarea>
-
-            </div>
+          <label for="instructions">Robot Instructions:</label>
+          <textarea class="form-control" [(ngModel)]="instructions" [ngModelOptions]="{standalone: true}" id="instructions" rows="9" maxlength="100" required></textarea>
+          <span class="form-label-black">{{instructions?.length}}/100</span>
+          <small id="emailHelp" class="form-text text-muted">No space at the start of input - Max input length:
+            100</small>
 
         </div>
 
-        <hr class="mt-4 mb-4" size=3>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="instructions?.length==0">Submit</button>
+      </form>
 
-        <div class="row mb-5">
-            <div class="col-6">
-                <label>Sample Input:</label>
-                <textarea class="form-control" id="resultDisplay" rows="8" disabled>5 3
+
+
+    </div>
+
+    <div class="col-6">
+
+      <label for="resultDisplay">Output:</label>
+      <textarea class="form-control" id="resultDisplay" rows="9" disabled>{{outputMartianRobot}}</textarea>
+
+    </div>
+
+  </div>
+
+  <hr class="mt-4 mb-4" size=3>
+
+  <div class="row mb-5">
+    <div class="col-6">
+      <label>Sample Input:</label>
+      <textarea class="form-control" id="resultDisplay" rows="8" disabled>5 3
 1 1 E
 RFRFRFRF
 3 2 N
@@ -43,17 +51,15 @@ FRRFLLFFRRFLL
 0 3 W
 LLFFFLFLFL
                 </textarea>
-            </div>
-            <div class="col-6">
-                <label>Sample Output:</label>
-                <textarea class="form-control" id="resultDisplay" rows="8" disabled>1 1 E
+    </div>
+    <div class="col-6">
+      <label>Sample Output:</label>
+      <textarea class="form-control" id="resultDisplay" rows="8" disabled>1 1 E
 3 3 N LOST
 2 3 S
                 </textarea>
-            </div>
-        </div>
-
-
     </div>
+  </div>
 
 
+</div>
